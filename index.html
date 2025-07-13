@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PatioTime</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', serif;
+    }
+
+    body {
+      color: white;
+    }
+
+    /* Top Info Bar */
+    .top-bar {
+      background: #111;
+      padding: 8px 30px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+
+    .top-bar div {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* Header / Navbar */
+    header {
+      background: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      position: absolute;
+      top: 40px;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-style: italic;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      
+    }
+
+    nav ul li{
+        align-items: right;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 2px solid white;
+      padding: 8px 18px;
+      color: white;
+      text-transform: uppercase;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: white;
+      color: black;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://patiotime.loftocean.com/wp-content/uploads/2022/03/louis-hansel-Sj8rgEu7jcM-unsplash.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      /* background: rgba(0, 0, 0, 0.6); */
+      padding: 60px 30px;
+      border-radius: 10px;
+      /* max-width: 900px; */
+    }
+
+    .hero-content h5 {
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .hero-content h1 {
+      font-size: 70px;
+      line-height: 1.3;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .cta-btn {
+      background: #ff5c00;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .cta-btn:hover {
+      background: #e54d00;
+    }
+
+
+    .taste-section {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 60px 40px;
+      gap: 40px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .left-col {
+      flex: 1 1 50%;
+      max-width: 600px;
+      padding: 0 5%;
+    }
+
+    .text-content h5 {
+      color: #dc582a;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .text-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    .text-content p {
+      font-size: 16px;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    .text-content .btn {
+      background: #dc582a;
+      color: white;
+      padding: 12px 22px;
+      text-decoration: none;
+      display: inline-block;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 30px;
+      transition: 0.3s;
+    }
+
+    .text-content .btn:hover {
+      background: #b9491f;
+    }
+
+    .left-col img,
+    .right-col img {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease-in, transform 1s ease-in-out;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .left-col img {
+      width: 100%;
+      height: auto;
+    }
+
+    .right-col {
+      flex: 1 1 40%;
+      padding: 0 5%;
+    }
+
+    .right-col img {
+      width: 90%;
+      height: 700px;
+    }
+
+    /* Animate on hover */
+    .taste-section:hover .left-col img,
+    .taste-section:hover .right-col img {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+
+
+    .menu-section {
+      max-width: 1300px;
+      margin: auto;
+      transform: translateY(40px);
+      transition: opacity 1s ease-in, transform 1s ease-in-out;
+    }
+
+    .menu-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .menu-column {
+      flex: 1 1 300px;
+      min-width: 250px;
+    }
+
+    .menu-column h5 {
+      color: #f66f08;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+
+    .menu-column h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      text-align: center;
+     color: #000;
+    }
+
+    .menu-item {
+      margin-bottom: 30px;
+    }
+
+    .menu-title-line {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .menu-title {
+      white-space: nowrap;
+      color: #000;
+    }
+
+    .menu-line {
+      flex-grow: 1;
+      height: 1px;
+      background-color: #ddd;
+      margin: 0 10px;
+    }
+
+    .menu-price {
+      white-space: nowrap;
+      color: #000;
+    }
+
+    .menu-desc {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .menu-buttons {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .menu-buttons button {
+      background: transparent;
+      border: 1px solid #000;
+      padding: 12px 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .menu-buttons button:hover {
+      background: #000;
+      color: white;
+    }
+
+        .section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 8%;
+      gap: 40px;
+      transform: translateY(70px);
+      transition: opacity 1s ease-in, transform 1s ease-in-out;
+    }
+
+    .left-images {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+      min-width: 280px;
+      max-width: 550px;
+      position: relative;
+    }
+
+    .img-top {
+      height: 450px;
+      object-fit: cover;
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+      z-index: 2;
+      padding-left: 30%;
+    }
+
+    .img-bottom {
+      height: 350px;
+    object-fit: cover;
+    width: 100%;
+    margin-top: -270px;
+    border-radius: 0 0 4px 4px;
+    z-index: 1;
+    padding-right: 50%;
+    }
+
+    .right-content {
+      flex: 1;
+      min-width: 280px;
+      max-width: 550px;
+    }
+
+    .sub-heading {
+      color: #f26522;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      /* border-top: 1px solid #f26522; */
+      width: fit-content;
+      padding-top: 5px;
+    }
+
+    .heading {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #f26522;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #c14e14;
+    }
+
+    .section-visit {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 8%;
+      gap: 40px;
+    }
+
+    .visit-text {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      text-align: right;
+    }
+
+    .visit-text .sub-heading {
+      color: #f26522;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+     
+      width: fit-content;
+      padding-top: 5px;
+      margin: 0 auto 10px;
+      text-align: right;
+    }
+
+    .visit-text h2 {
+      font-size: 38px;
+      margin-bottom: 20px;
+      color: #000;
+    }
+
+    .visit-text p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      background-color: #f26522;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: #c14e14;
+    }
+
+    .visit-images {
+      display: flex;
+      gap: 20px;
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+      justify-content: center;
+    }
+
+  .visit-images img {
+    width: 100%;
+    height: fit-content;
+    border-radius: 4px;
+    max-height: 442px;
+    transform: translateY(70px);
+    transition: opacity 1s ease, transform 1s ease-in-out;
+}
+
+
+
+    .image-wrapper {
+      width: 48%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .reservation-section {
+      background: url("https://patiotime.loftocean.com/wp-content/uploads/2022/03/alaksiej-carankievic-JBDYs80RTcs-unsplash.jpg") no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+    }
+
+    .reservation-section::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .reservation-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .reservation-content .sub-heading {
+      color: #f26522;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      border-top: 1px solid #f26522;
+      width: fit-content;
+      padding-top: 5px;
+      margin-inline: auto;
+    }
+
+    .reservation-content h2 {
+      font-size: 48px;
+      margin-bottom: 40px;
+    }
+
+    .reservation-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    select, input[type="date"], input[type="time"] {
+      padding: 10px 14px;
+      font-size: 16px;
+      border: none;
+      border-bottom: 1px solid white;
+      background-color: transparent;
+      color: white;
+      min-width: 150px;
+      outline: none;
+    }
+
+    ::placeholder {
+      color: white;
+      opacity: 0.8;
+    }
+
+    .book-btn {
+      background-color: #f26522;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .book-btn:hover {
+      background-color: #c14e14;
+    }
+
+    .powered {
+      font-size: 12px;
+      /* opacity: 0.7; */
+      margin-top: 10px;    
+      position: absolute;
+      left: 13%;
+    }
+
+    .footer {
+      background-color: #111015;
+      color: white;
+      padding: 60px 8% 30px;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .footer h3 {
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    .footer p, .footer a, .footer label {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    .footer a {
+      text-decoration: none;
+    }
+
+    .footer .social-icons {
+      margin-top: 20px;
+    }
+
+    .footer .social-icons i {
+      font-size: 18px;
+      margin-right: 15px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .newsletter input[type="email"] {
+      background: none;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      padding: 8px;
+      color: white;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .newsletter input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+     .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
+      color: white;
+      padding: 15px 30px;
+      font-size: 14px;
+    }
+
+    .footer-bottom a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+
+        .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 0.8fr;
+      grid-template-rows: 1fr 1fr;
+      height: 100vh;
+    }
+
+    .cell {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+      transition: transform 0.5s ease;
+    }
+
+    .content {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      width: 100%;
+    }
+
+    h3 {
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: normal;
+      line-height: 1.3;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 2px solid #ff5e00;
+      padding-bottom: 2px;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    /* Background image section classes */
+    .left-wide {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+      background-image: url('https://patiotime.loftocean.com/wp-content/uploads/2022/03/cta-bg-3-1440x1440.jpg');
+      background-position: left top;
+    }
+
+    .mid1-img {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      background-image: url('https://patiotime.loftocean.com/wp-content/uploads/2022/03/cta-bg-4.jpg');
+      background-position: center top;
+    }
+
+    .mid1-text {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mid2-text {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .mid2-img {
+      grid-column: 3 / 4;
+      grid-row: 2 / 3;
+      background-image: url('https://patiotime.loftocean.com/wp-content/uploads/2022/03/cta-bg-5.jpg');
+      background-position: center bottom;
+    }
+
+    .right-small {
+      grid-column: 4 / 5;
+      grid-row: 1 / 3;
+      background-image: url('https://patiotime.loftocean.com/wp-content/uploads/2022/03/cta-bg-6-2.jpg');
+      background-position: right center;
+    }
+
+    /* Only image cells zoom on hover */
+    .left-wide,
+    .mid1-img,
+    .mid2-img,
+    .right-small {
+      transition: transform 0.5s ease;
+    }
+
+    .left-wide:hover,
+    .mid1-img:hover,
+    .mid2-img:hover,
+    .right-small:hover {
+      transform: scale(1.05);
+      z-index: 1;
+    }
+
+    /* Optional: Smooth overflow */
+    .grid {
+      overflow: hidden;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 992px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        height: auto;
+      }
+
+      .left-wide,
+      .mid1-img,
+      .mid1-text,
+      .mid2-text,
+      .mid2-img,
+      .right-small {
+        grid-column: span 1;
+        grid-row: auto;
+        height: 300px;
+      }
+
+      .cell {
+        align-items: flex-end;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .left-wide,
+      .mid1-img,
+      .mid1-text,
+      .mid2-text,
+      .mid2-img,
+      .right-small {
+        grid-column: span 1;
+        height: 250px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      h3 {
+        font-size: 12px;
+      }
+
+      a {
+        font-size: 13px;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+
+      .footer-bottom div {
+        margin-left: 0;
+      }
+    }
+    @media (max-width: 768px) {
+      .reservation-content h2 {
+        font-size: 32px;
+      }
+
+      .reservation-form {
+        flex-direction: column;
+      }
+
+      select, input[type="date"], input[type="time"] {
+        width: 100%;
+      }
+    }
+
+
+    @media (max-width: 768px) {
+      .section-visit {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .visit-images {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .image-wrapper {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .left-images {
+        margin-bottom: 20px;
+      }
+
+      .description {
+        margin: 0 auto 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .menu-column {
+        text-align: center;
+      }
+
+      .menu-title-line {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .menu-line {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .taste-section {
+        flex-direction: column;
+        padding: 30px 20px;
+      }
+
+      .text-content h2 {
+        font-size: 2rem;
+      }
+    }
+
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Info Bar -->
+  <div class="top-bar">
+    <div>
+      <span>📍 Silk St, Barbican, London EC2Y 8DS, UK</span>
+    </div>
+    <div>
+      <span>📞 +39-055-123456</span>
+      <span>✉️ booking@patiotime.com</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">Pt.</div>
+    <nav>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">MENUS</a></li>
+        <li><a href="#">PAGES</a></li>
+        <li><a href="#">BLOG</a></li>
+        <li><a href="#">SHOP</a></li>
+      </ul>
+    </nav>
+    <button class="btn">FIND A TABLE</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h5>WELCOME TO PATIOTIME</h5>
+      <h1>Delicious Food & Wonderful<br>Eating Experience</h1>
+      <p>We Serve Food, Harmony, & Laughter Since 1998</p>
+      <button class="cta-btn">VIEW FULL MENUS</button>
+    </div>
+  </section>
+
+  <section class="taste-section">
+    <div class="left-col">
+      <div class="text-content">
+        <h5>REFRESH YOUR TASTE BUDS</h5>
+        <h2>Enjoy An Exceptional<br>Journey of Taste</h2>
+        <p>We see our customers as invited guests to a party, and we are the hosts. It’s our job every day to make every important aspect of the customer experience a little bit better.</p>
+        <a href="#" class="btn">DISCOVER MORE</a>
+      </div>
+      <img src="https://patiotime.loftocean.com/wp-content/uploads/2022/03/davide-cantelli-jpkfc5_d-DI-unsplash-1024x683.jpg" alt="Food Dish Image">
+    </div>
+    <div class="right-col">
+      <img src="https://patiotime.loftocean.com/wp-content/uploads/2022/03/img-10-768x1152.jpg" alt="Person Eating">
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <div class="menu-grid">
+      <!-- Starters -->
+      <div class="menu-column">
+        <h5>Fresh Taste Buds</h5>
+        <h2>Starters</h2>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Purple Corn Tostada</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$36</span>
+          </div>
+          <p class="menu-desc">Ricotta, goat cheese, beetroot and datterini.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Bruno's Scribble</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$30</span>
+          </div>
+          <p class="menu-desc">Culatello, Spalla Cotta, Mortadella, Culacciona.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Fresh Oysters Dozen</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$59</span>
+          </div>
+          <p class="menu-desc">Our selection of fresh oysters, limes.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Wild Mushroom Arancini</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$18</span>
+          </div>
+          <p class="menu-desc">Porcini purée, parmesan, basil.</p>
+        </div>
+      </div>
+
+      <!-- Main Dishes -->
+      <div class="menu-column">
+        <h5>Top Rated Dishes</h5>
+        <h2>Main Dishes</h2>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Crispy Skin Chicken</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$33</span>
+          </div>
+          <p class="menu-desc">Ricotta, radicchio, prosciutto salad, cabernet.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Flank Steak</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$35</span>
+          </div>
+          <p class="menu-desc">Served medium rare, salad, mushroom sauce.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Ebony Fillet Steak</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$58</span>
+          </div>
+          <p class="menu-desc">Truffle mash, pepper sauce.</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Fish & Chips</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$33</span>
+          </div>
+          <p class="menu-desc">Atlantic cod fillet, chips, salad, tartare, lemon.</p>
+        </div>
+      </div>
+
+      <!-- Beverages -->
+      <div class="menu-column">
+        <h5>Drink & Wines</h5>
+        <h2>Beverage</h2>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Prickly Pear Tonic</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$12</span>
+          </div>
+          <p class="menu-desc">Prickly Pear, Chancaca, Key Lime, and Tonic</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Tommy's Margarita</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$13</span>
+          </div>
+          <p class="menu-desc">Tequila, fresh lime juice, and orange liqueur</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Chicha Morada</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$12</span>
+          </div>
+          <p class="menu-desc">Purple Corn, Pineapple, Apple, Cinnamon</p>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-title-line">
+            <span class="menu-title">Better Boy</span>
+            <span class="menu-line"></span>
+            <span class="menu-price">$10</span>
+          </div>
+          <p class="menu-desc">Tomato, Salt, Black Pepper, Lemon</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="menu-buttons">
+      <button>Browse Menus</button>
+      <button>Order Online</button>
+    </div>
+  </section>
+
+  
+  <div class="grid">
+    <div class="cell left-wide">
+      <div class="content">
+        <h3>RECOMMENDATIONS</h3>
+        <h2>NEW TASTING MENUS</h2>
+        <a href="#">SPRING SPECIALS</a>
+      </div>
+    </div>
+
+    <div class="cell mid1-img"></div>
+
+    <div class="cell mid1-text">
+      <div class="content">
+        <h3>RECIPES</h3>
+        <h2>OUR CHEF'S<br>SECRETS</h2>
+        <a href="#">LEARN MORE</a>
+      </div>
+    </div>
+
+    <div class="cell mid2-text">
+      <div class="content">
+        <h3 style="color:#ff5e00;">A LA CARTE</h3>
+        <h2>VIEW FULL<br>MENUS</h2>
+        <a href="#">LEARN MORE</a>
+      </div>
+    </div>
+
+    <div class="cell mid2-img"></div>
+
+    <div class="cell right-small">
+      <div class="content">
+        <h3>WINE LIST</h3>
+        <h2>HAVE A<br>DRINK</h2>
+        <a href="#">LEARN MORE</a>
+      </div>
+    </div>
+  </div>
+  <section class="section">
+    <div class="left-images">
+      <img src="https://patiotime.loftocean.com/wp-content/uploads/2022/03/chef-1-768x960.jpg" alt="Table Setting" class="img-top">
+      <img src="https://patiotime.loftocean.com/wp-content/uploads/2022/03/klara-kulikova-gXmCinze3k8-unsplash-550x825.jpg" class="img-bottom">
+    </div>
+    <div class="right-content">
+      <div class="sub-heading">________QUALITY & BALANCE</div>
+      <div class="heading">OUR FOOD PHILOSOPHY</div>
+      <p class="description">
+        Simple and balanced. Alexander Petillo brings together flavors and specialties from Italy and beyond to create his own culinary world, full of surprising artistry.
+      </p>
+      <a href="#" class="btn">LEARN MORE</a>
+    </div>
+  </section>
+
+   <section class="section-visit">
+    <div class="visit-text">
+      <div class="sub-heading">________RIGHT HERE WAITING</div>
+      <h2>VISIT OUR RESTAURANT</h2>
+      <p>We see our customers as invited guests to a party, and we are the hosts. Piazza della Signoria, 1050122 . Firenze . Italy</p>
+      <p>M: booking@patiotime.com<br/>T: +39 055 1234567</p>
+      <a href="#" class="btn">GET DIRECTIONS</a>
+    </div>
+
+    <div class="visit-images">
+      <div class="image-wrapper">
+        <img src="https://patiotime.loftocean.com/wp-content/uploads/2022/03/klara-kulikova-f3ICj3QJkQA-unsplash-550x825.jpg" alt="Wine Image">
+      </div>
+      <div class="image-wrapper">
+        <img src="https://patiotime.loftocean.com/wp-content/uploads/2022/03/img-8-2-550x743.jpg" alt="Food Image">
+      </div>
+    </div>
+  </section>
+
+  <br>
+  
+  <section class="reservation-section">
+    <div class="reservation-content">
+      <div class="sub-heading">ONLINE RESERVATION</div>
+      <h2>BOOK A TABLE</h2>
+
+      <form class="reservation-form">
+        <select>
+          <option>1 Person</option>
+          <option>2 People</option>
+          <option>3 People</option>
+          <option>4 People</option>
+          <option>5 People</option>
+        </select>
+
+        <input type="date" value="2025-07-08">
+
+        <select>
+          <option>9:00 am</option>
+          <option>10:00 am</option>
+          <option>11:00 am</option>
+          <option>12:00 pm</option>
+          <option>1:00 pm</option>
+          <option>2:00 pm</option>
+          <option>6:00 pm</option>
+        </select>
+
+        <button type="submit" class="book-btn">BOOK NOW</button>
+      </form>
+
+      <div class="powered">*Powered by OpenTable</div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      
+      <!-- Brand Info -->
+      <div class="footer-col">
+        <h2>Patio.Time</h2>
+        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</p>
+        <div class="social-icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-pinterest-p"></i>
+          <i class="fab fa-youtube"></i>
+        </div>
+      </div>
+
+      <!-- Working Hours -->
+      <div class="footer-col">
+        <h3>Working Hours</h3>
+        <p>Monday - Friday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 09:00 - 22:00</p>
+        <p>Saturday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11:00 - 00:00</p>
+        <p>Sunday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11:00 - 23:00</p>
+        <br>
+        <p>* Happy hour &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;17:00 - 21:00</p>
+      </div>
+
+      <!-- Address -->
+      <div class="footer-col">
+        <h3>Our Address</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Silk St, Barbican, London EC2Y 8DS, UK</p><br>
+        <p><i class="fas fa-phone-alt"></i> +39-055-123456</p><br>
+        <p><i class="fas fa-envelope"></i> booking@patiotime.com</p>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-col newsletter">
+        <h3>Newsletter</h3>
+        <p>Receive the latest news from us.</p>
+        <input type="email" placeholder="Your Email Address">
+        <label><input type="checkbox"> I agree to the Privacy Policy</label>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © Copyright PatioTime WordPress Theme for Restaurant & Cafe.
+      <div>
+        <a href="#">Privacy</a>
+        <a href="#">Term of Use</a>
+        <a href="#">Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
